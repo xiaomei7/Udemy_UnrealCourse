@@ -1,3 +1,4 @@
+/*The Game Logic*/
 #pragma once
 #include <string>
 
@@ -29,16 +30,19 @@ public:
 	// const only works on class functions
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
-	int32 GetHiddenWordLength() const;
-
+	int32 GetHiddenWordLength() const; 
 	bool IsGameWon() const;
-	void Reset(); // TODO make a more rich return value
+	
+	void Reset(); 
 	EGuessStatus CheckGuessValidity(FString);
-	FBullCowCount Submitguess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 private:
 	// see constructor for initialization 
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
+	bool bIsGameWon;
+
+	bool IsIsogram(FString) const;
+	bool IsLowerCase(FString) const;
 };
